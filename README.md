@@ -2,7 +2,12 @@ This project provides a simple example of how you can create an API for resizing
 
 ### Prerequisites
 - Node.js
-- curl
+
+### How to Use
+To resize an image, send a POST request to the **/api/resize-image** endpoint with the following parameters:
+- image
+- width: The desired width of the image
+- format: The desired format of the new image, default is webp
 
 ### Test with curl
 - `npm install`
