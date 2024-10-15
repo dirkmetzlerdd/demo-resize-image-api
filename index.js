@@ -9,11 +9,13 @@ const supportedFormats = ["jpeg", "png", "webp"];
 
 app.post("/api/resize-image", upload.single("image"), (req, res) => {
   const buffer = req.file.buffer;
-  let { width = 200, format = "webp" } = req.query;
+
+  console.log("Request", new Date())
+  let { width = 600, format = "webp" } = req.query;
   if (!supportedFormats.includes(format)) format = "webp";
 
   sharp(buffer)
-    .resize(parseInt(width))
+    .resize(width ? parseInt(width) : undefined)
     .toFormat(format)
     .toBuffer()
     .then((data) => {
